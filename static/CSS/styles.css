@@ -1,0 +1,143 @@
+
+body {
+    background-color: rgb(236, 227, 227);
+    font-family: 'Arial', sans-serif;
+}
+
+main {
+    flex: 1;
+    padding: 60px 20px 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Header */
+header {
+    background-color: #0056b3;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    padding-left: 100px;
+    margin-bottom: 1.5rem;
+}
+
+.note {
+    padding-bottom: 3rem;
+    margin-left: 5rem;
+}
+
+.boxes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: right; /* Centers content horizontally */
+    margin-left: 0; /* Remove the left margin */
+}
+
+
+/* Form Inputs */
+/* .form-control {
+    text-align: left;
+    margin-bottom: 1rem;
+    margin-right: 2rem;
+    width: 350px;
+} */
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    width: 150px; /* Fixed width for the label */
+    margin-right: 0.25rem; /* Space between label and input */
+    margin-bottom: .5rem;
+    text-align: right; 
+}
+
+.buttons {
+    display: flex;
+    justify-content: center; /* Centers buttons */
+    align-items: center; /* Aligns them properly */
+    gap: 0rem; /* Reduce spacing between buttons */
+    margin-top: 1.5rem;
+}
+
+
+/* Submit Button */
+.btn-submit {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    margin-left: 0rem;
+    padding: 0.6rem 2rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-submit:hover {
+    background: linear-gradient(90deg, #0056b3, #007bff);
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-clear {
+    background: linear-gradient(90deg, #ff5733, #c92d0a);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    margin-left: 1rem;
+    padding: 0.6rem 2rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-clear:hover {
+    background: linear-gradient(90deg, #d84315, #d84315);
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Comparison Results */
+.comparison-results {
+    margin-top: 2rem;
+    margin-left: 2rem;
+    text-align: center;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #ff5733;
+    color: white;
+    padding: 0.75rem;
+}
+
+td {
+    padding: 0.75rem;
+    border: 1px solid #1d66af;
+}
+
+tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
