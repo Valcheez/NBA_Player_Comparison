@@ -25,11 +25,14 @@ jobs:
 
       - name: Install dependencies
         run: |
+          cd NBA_Stat_Comparison_App
           pip install -r requirements.txt
           pip install pytest
 
       - name: Run unit tests
-        run: pytest tests/
+        run: |
+          cd NBA_Stat_Comparison_App
+          pytest tests/
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v2
@@ -40,7 +43,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/nba-flask-app:latest .
+          docker build -t ghcr.io/${{ github.repository_owner }}/nba-flask-app:latest ./NBA_Stat_Comparison_App
 
       - name: Push Docker image to GHCR
         run: |
