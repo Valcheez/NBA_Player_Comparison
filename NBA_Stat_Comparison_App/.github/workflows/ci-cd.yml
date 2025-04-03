@@ -1,0 +1,73 @@
+name: CI/CD with GHCR
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  IMAGE_NAME: nba-flask-app
+  IMAGE_TAG: latest
+  GHCR_IMAGE: ghcr.io/${{ github.repository_owner }}/nba-flask-app:latest
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          cd NBA_Stat_Comparison_App
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Run unit tests
+        run: |
+          cd NBA_Stat_Comparison_App
+          pytest tests/
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Docker image
+        run: |
+          docker build -t ghcr.io/${{ github.repository_owner }}/nba-flask-app:latest ./NBA_Stat_Comparison_App
+
+      - name: Push Docker image to GHCR
+        run: |
+          docker push ghcr.io/${{ github.repository_owner }}/nba-flask-app:latest
+
+      - name: Run app container
+        run: |
+          docker run -d \
+            -e SECRET_KEY=${{ secrets.FLASK_SECRET_KEY }} \
+            -p 5000:5000 \
+            --name test-app \
+            ghcr.io/${{ github.repository_owner }}/nba-flask-app:latest
+
+      - name: Smoke test
+        run: |
+          sleep 5
+          curl --fail http://localhost:5000 | grep "NBA Player Regular Season Comparison"
+
+          - name: Stop and remove test container
+          run: |
+            docker stop test-app
+            docker rm test-app
+
+      - name: Stop and remove test container
+        run: |
+          docker stop test-app
+          docker rm test-app
