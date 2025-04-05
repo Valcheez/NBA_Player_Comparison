@@ -1,5 +1,6 @@
 import pytest
-import app
+import nba_api
+from app import app
 
 @pytest.fixture
 def client():
