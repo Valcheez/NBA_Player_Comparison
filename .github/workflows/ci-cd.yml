@@ -45,11 +45,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/nba-flask-app:latest ./NBA_Stat_Comparison_App
+          docker build -t ghcr.io/${{ github.repository_owner,, }}/nba-flask-app:latest ./NBA_Stat_Comparison_App
 
       - name: Push Docker image to GHCR
         run: |
-          docker push ghcr.io/${{ github.repository_owner }}/nba-flask-app:latest
+          docker push ghcr.io/${{ github.repository_owner,, }}/nba-flask-app:latest
 
       - name: Run app container
         run: |
@@ -57,7 +57,7 @@ jobs:
             -e SECRET_KEY=${{ secrets.FLASK_SECRET_KEY }} \
             -p 5000:5000 \
             --name test-app \
-            ghcr.io/${{ github.repository_owner }}/nba-flask-app:latest
+            ghcr.io/${{ github.repository_owner,, }}/nba-flask-app:latest
 
       - name: Smoke test
         run: |
