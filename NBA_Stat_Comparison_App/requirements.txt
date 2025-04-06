@@ -2,4 +2,4 @@ flask==2.0.1
 python-dotenv==0.21.1
 nba_api==1.6.1
 requests==2.32.3
-Werkzeug==2.2.2
+Werkzeug==2.0.2
